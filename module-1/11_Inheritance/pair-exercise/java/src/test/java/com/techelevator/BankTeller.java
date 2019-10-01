@@ -57,6 +57,17 @@ public class BankTeller {
 		}
 	}
 	
+	public static void withdrawMoney(BankAccount account, BigDecimal amount) {
+		BigDecimal originalBalance = account.getBalance();
+		account.withdraw(amount);
+		BigDecimal newBalance = account.getBalance();
+		if( originalBalance.equals(newBalance) ) {
+			System.out.println("I'm sorry, I was not able to with $"+amount+" from your "+accountType(account));
+		} else {
+			System.out.println("Successfully withdrew $"+amount+" from your "+accountType(account));
+		}
+	}
+	
 	public static void transferMoney(BankAccount fromAccount, BankAccount toAccount, BigDecimal amount) {
 		BigDecimal originalBalance = fromAccount.getBalance();
 		fromAccount.transfer(toAccount, amount);
