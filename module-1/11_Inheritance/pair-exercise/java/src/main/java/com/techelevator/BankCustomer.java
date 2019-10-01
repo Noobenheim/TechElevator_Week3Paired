@@ -83,7 +83,7 @@ public class BankCustomer {
 	 * 
 	 * @return An {@code Array} of {@code BankAccount}
 	 */
-	public BankAccount[] getAccount() {
+	public BankAccount[] getAccounts() {
 		// return the list converted to an array
 		return accounts.toArray(new BankAccount[accounts.size()]);
 	}
