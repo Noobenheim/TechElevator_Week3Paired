@@ -35,6 +35,32 @@ public class BankTeller {
 		amountToTransfer = new BigDecimal("50");
 		transferMoney(savingsAccount, checkingAccount, amountToTransfer);
 		tellAccountBalances(jayGatsby);
+		
+		checkVip(jayGatsby);
+		
+		amountToDeposit = new BigDecimal(25000);
+		depositMoney(checkingAccount, amountToDeposit);
+		tellAccountBalances(jayGatsby);
+		
+		checkVip(jayGatsby);
+		
+		amountToTransfer = new BigDecimal(15000);
+		transferMoney(checkingAccount, savingsAccount, amountToTransfer);
+		tellAccountBalances(jayGatsby);
+		
+		checkVip(jayGatsby);
+		
+		BigDecimal amountToWithdraw = new BigDecimal(88);
+		withdrawMoney(checkingAccount, amountToWithdraw);
+		tellAccountBalances(jayGatsby);
+		
+		checkVip(jayGatsby);
+		
+		amountToWithdraw = new BigDecimal(1);
+		withdrawMoney(checkingAccount, amountToWithdraw);
+		tellAccountBalances(jayGatsby);
+		
+		checkVip(jayGatsby);
 	}
 
 	public static void tellAccountBalances(BankCustomer customer) {
@@ -86,6 +112,14 @@ public class BankTeller {
 			return "Savings Account";
 		} else {
 			return "Bank Account";
+		}
+	}
+	
+	public static void checkVip(BankCustomer customer) {
+		if( customer.isVip() ) {
+			System.out.println("Congratulations! You're a VIP customer!");
+		} else {
+			System.out.println("Your account balances are not high enough for VIP status.");
 		}
 	}
 }

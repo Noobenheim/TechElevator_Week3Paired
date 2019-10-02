@@ -1,10 +1,15 @@
 package com.techelevator;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BankCustomer {
 	// Data Members
+	/**
+	 * The amount of money required in all accounts to be a VIP customer.
+	 */
+	private final BigDecimal VIP_AMOUNT = new BigDecimal(25_000);
 	/**
 	 * The name of the {@code BankCustomer} as a {@code String}.
 	 */
@@ -95,5 +100,23 @@ public class BankCustomer {
 	 */
 	public void addAccount (BankAccount newAccount) {
 		accounts.add(newAccount);
+	}
+	
+	/**
+	 * Adds up the total balances in all {@code BankAccount}s to see if
+	 * the balance is greater than or equal to {@link #VIP_AMOUNT}.
+	 * 
+	 * @return True if balance is greater than or equal to, or
+	 * false if the balance is less than the {@link #VIP_AMOUNT}
+	 */
+	public boolean isVip() {
+		BigDecimal total = new BigDecimal(0);
+		for(BankAccount account : accounts ) {
+			total = total.add(account.getBalance());
+			if( total.compareTo(VIP_AMOUNT) >= 0 ) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
