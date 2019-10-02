@@ -2,35 +2,36 @@ package com.techelevator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
 public class Payroll {
 
 	public static void main(String[] args) {
+		Worker[] employees = new Worker[] {new MickeyMouse(), new GoofyGeef(), new DaisyDuck(), new MinnieMouse()};
+		List<Worker> workers = new ArrayList<>( Arrays.asList(employees) );
+		Map<Worker, Integer> workerToHoursWorked = new HashMap<>();
 		
+		workerToHoursWorked.put(workers.get(0), 90); // Mickey Mouse
+		workerToHoursWorked.put(workers.get(1), 90); // Goofy Geef
+		workerToHoursWorked.put(workers.get(2), 110); // Daisy Duck
+		workerToHoursWorked.put(workers.get(3), 20); // Minnie Duck
 		
-		Company[] employees = new Company[] {new MickeyMouse(), new GoofyGeef(), new DaisyDuck()};
+		double totalPay = 0.0;
+		int totalHours = 0;
 		
-		List<Company> workers = new ArrayList<>();
+		System.out.println("Employee\tHours Worked\t\tPay");
+		System.out.println("====================================================");
 		
-		workers.addAll(Arrays.asList(employees));
-		
-		double totalPay = 0.0; 
-		int totalHours = 0; 
-		
-		for(Company worker : workers) {
-			int hoursWorked = worker.getHoursWorked(); 
+		for(Worker worker : workers) {
+			int hoursWorked = workerToHoursWorked.get(worker);
 			double calculatePay = worker.calculateWeeklyPay(hoursWorked); 
 			
-			System.out.println(worker.getLastName() + ", " + worker.getFirstName() + "\tHours Worked: "+ worker.getHoursWorked() + "\tThey were paid: $" + Double.toString(calculatePay));
-		}	
-		
-		for (Company worker: workers) {
-			int hoursWorked = worker.getHoursWorked();
+			System.out.println(worker.getLastName() + ", " + worker.getFirstName() + "\t"+ hoursWorked + "\t\t\t$" + Double.toString(calculatePay));
+
 			totalHours = totalHours + hoursWorked; 
-			double pay = worker.calculateWeeklyPay(hoursWorked);
-			totalPay += pay; 
+			totalPay += calculatePay;
 		}
 		System.out.println(); 
 		System.out.println("Total hours worked: " + totalHours);

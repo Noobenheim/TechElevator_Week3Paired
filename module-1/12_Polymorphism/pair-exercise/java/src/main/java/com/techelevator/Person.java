@@ -1,10 +1,9 @@
 package com.techelevator;
 
-public class Company implements Worker{
+public class Person {
 	
 	protected String firstName;
 	protected String lastName;
-	protected int hoursWorked; 
 
 
 	public String firstName() {
@@ -21,17 +20,6 @@ public class Company implements Worker{
 
 	public String getLastName() {
 		return lastName;
-	}
-	
-	public int getHoursWorked() {
-		return hoursWorked;
-	}
-
-
-	@Override
-	public double calculateWeeklyPay(int hoursWorked) {
-		
-		return 0;
 	}
 
 }
