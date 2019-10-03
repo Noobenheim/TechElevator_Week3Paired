@@ -7,9 +7,11 @@ public class HourlyWorker extends Person implements Worker {
 		return hourlyRate;
 	}
 
-	public HourlyWorker(String firstName, String lastName, double hourlyRate) {
-		this.firstName = firstName;
-		this.lastName = lastName; 
+	public HourlyWorker(String firstName, String lastName, double hourlyRate) { 
+		super(firstName, lastName);
+		if( hourlyRate <= 0.0 ) {
+			throw new IllegalArgumentException("Hourly rate cannot be lower than or equal to 0");
+		} 
 		this.hourlyRate = hourlyRate;
 	}
 

@@ -2,8 +2,7 @@ package com.techelevator;
 
 public class VolunteerWorker extends Person implements Worker {
 	public VolunteerWorker (String firstName, String lastName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
+		super(firstName, lastName); 
 	}
 
 	@Override

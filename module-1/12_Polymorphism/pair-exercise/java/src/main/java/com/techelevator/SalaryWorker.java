@@ -8,9 +8,12 @@ public class SalaryWorker extends Person implements Worker {
 	}
 	
 	public SalaryWorker (String firstName, String lastName, double annualSalary) {
-		this.firstName = firstName;
-		this.lastName = lastName;
+		super(firstName, lastName);
 		this.annualSalary = annualSalary;
+		
+		if (this.annualSalary <= 0) {
+			throw new IllegalArgumentException("Annual salary cannot be lower than or equal to 0");
+		}
 	}
 
 	@Override

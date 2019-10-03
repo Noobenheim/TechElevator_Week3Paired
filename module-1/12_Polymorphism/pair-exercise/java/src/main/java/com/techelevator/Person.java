@@ -2,17 +2,13 @@ package com.techelevator;
 
 public class Person {
 	
-	protected String firstName;
-	protected String lastName;
-
-
-	public String firstName() {
-		return firstName();
+	public Person (String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
-
-	public String lastName() {
-		return lastName();
-	}
+	
+	private String firstName;
+	private String lastName;
 
 	public String getFirstName() {
 		return firstName;
